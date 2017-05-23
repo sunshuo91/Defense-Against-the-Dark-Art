@@ -1,0 +1,11 @@
+//Steve Sun(ss8ee)
+//method.txt
+//Feb 24th
+
+	In order to run the virus code before the main application runs, we need to insert the virus code in <Initialize application> phase. We know the virus code is already inserted, all we need to do is to push the virus code when executing Initialize application. According to objdump I observed there are 7 bytes cavity and thus i have enough space to insert a push command, right before the rec command. Therefore, after I opened the target.exe, I copied all the bytes except for those 7 bytes. Then, I coded the push command in bytes and put them in these 7 bytes memory. Since the virus code is put at cavity, the size of the infected executable file remains the same.
+
+	Compared the objdump and hexdump, I obtained the file offset of several functions.
+	The file offset of the start of function
+		1) main: 981 bytes
+		2) TerminateApplication: 1009 bytes
+		2) InitializeApplication: 1029 bytes
